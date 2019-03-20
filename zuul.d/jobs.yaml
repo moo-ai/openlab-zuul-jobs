@@ -561,596 +561,596 @@
 #      - orange_credentials
 
 # ansible jobs
-- job:
-    name: openstacksdk-ansible-devel-functional-devstack
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against a master devstack using git devel branch version of ansible.
-    run: playbooks/ansible-functional-devstack/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-      - name: liu-sheng/ansible
-        override-checkout: devel
-    vars:
-      os_sdk: openstacksdk
-
-- job:
-    name: openstacksdk-ansible-functional-devstack
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against a master devstack using git stable-2.7 branch version of ansible.
-    run: playbooks/ansible-functional-devstack/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-    vars:
-      os_sdk: openstacksdk
-    override-checkout: stable-2.7
-
-- job:
-    name: openstacksdk-ansible-functional-devstack-rocky
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against a rocky devstack using git stable-2.7 branch version of ansible.
-    run: playbooks/ansible-functional-devstack/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-    vars:
-      os_sdk: openstacksdk
-      global_env:
-        OS_BRANCH: stable/rocky
-    override-checkout: stable-2.7
-
-- job:
-    name: openstacksdk-ansible-functional-devstack-queens
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against a queens devstack using git stable-2.7 branch version of ansible.
-    run: playbooks/ansible-functional-devstack/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-    vars:
-      os_sdk: openstacksdk
-      global_env:
-        OS_BRANCH: stable/queens
-    override-checkout: stable-2.7
-
-- job:
-    name: openstacksdk-ansible-functional-devstack-pike
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against a pike devstack using git stable-2.7 branch version of ansible.
-    run: playbooks/ansible-functional-devstack/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-      - name: liu-sheng/ansible
-        override-checkout: stable-2.7
-    vars:
-      os_sdk: openstacksdk
-      global_env:
-        OS_BRANCH: stable/pike
-
-- job:
-    name: openstacksdk-ansible-functional-devstack-ocata
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against a ocata devstack using git stable-2.7 branch version of ansible.
-    run: playbooks/ansible-functional-devstack/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-    vars:
-      os_sdk: openstacksdk
-      global_env:
-        OS_BRANCH: stable/ocata
-    override-checkout: stable-2.7
-
-- job:
-    name: openstacksdk-ansible-functional-devstack-newton
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against a newton devstack using git stable-2.7 branch version of ansible.
-    run: playbooks/ansible-functional-devstack/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-    vars:
-      os_sdk: openstacksdk
-      global_env:
-        OS_BRANCH: stable/newton
-    override-checkout: stable-2.7
-
-- job:
-    name: openstacksdk-ansible-functional-devstack-mitaka
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against a mitaka devstac using git stable-2.7 branch version of ansible.
-    run: playbooks/ansible-functional-devstack/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-    vars:
-      os_sdk: openstacksdk
-      global_env:
-        OS_BRANCH: stable/mitaka
-    nodeset: ubuntu-trusty
-    override-checkout: stable-2.7
-
-- job:
-    name: shade-ansible-stable-2.5-functional-devstack
-    parent: init-test
-    description: |
-      Run shade ansible functional tests against a master devstack
-      using git stable-2.5 branch version of ansible.
-    run: playbooks/ansible-functional-devstack/run.yaml
-    required-projects:
-      - openstack-infra/shade
-    override-checkout: stable-2.5
-    vars:
-      os_sdk: shade
-
-- job:
-    name: openstacksdk-ansible-functional-opentelekomcloud
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against a opentelekomcloud using git stable-2.7 branch version of ansible.
-    run: playbooks/ansible-functional-public-clouds/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-    vars:
-      cloud_name: opentelekomcloud
-      os_sdk: openstacksdk
-      # Disable public cloud policy limit roles: group keystone_domain keystone_role nova_flavor user user_group
-      test_cases: auth image keypair network object port router security_group server subnet volume
-    secrets:
-      - opentelekomcloud_credentials
-    override-checkout: stable-2.7
-
-- job:
-    name: openstacksdk-ansible-functional-orange
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against orange cloud using git stable-2.7 branch version of ansible.
-    run: playbooks/ansible-functional-public-clouds/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-    vars:
-      cloud_name: orange
-      os_sdk: openstacksdk
-      # Disable public cloud policy limit roles: group keystone_domain keystone_role nova_flavor user user_group object
-      test_cases: auth image keypair network port router security_group server subnet volume
-    secrets:
-      - orange_credentials
-    override-checkout: stable-2.7
-
-- job:
-    name: openstacksdk-ansible-functional-telefonica
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against telefonica cloud using git stable-2.7 branch version of ansible.
-    run: playbooks/ansible-functional-public-clouds/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-    vars:
-      cloud_name: telefonica
-      os_sdk: openstacksdk
-      # Disable public cloud policy limit roles: group keystone_domain keystone_role nova_flavor user user_group object
-      test_cases: auth image keypair network port router security_group server subnet volume
-    secrets:
-      - telefonica_credentials
-    override-checkout: stable-2.7
-
-- job:
-    name: openstacksdk-ansible-functional-huaweicloud
-    parent: init-test
-    description: |
-      Run openstacksdk ansible functional tests against huaweicloud using git stable-2.7 branch version of ansible.
-    run: playbooks/ansible-functional-public-clouds/run.yaml
-    required-projects:
-      - openstack/openstacksdk
-    vars:
-      cloud_name: huaweicloud
-      os_sdk: openstacksdk
-      # Disable public cloud policy limit roles: group keystone_domain keystone_role nova_flavor user user_group object
-      test_cases: auth image keypair network port router security_group server subnet volume
-    secrets:
-      - huaweicloud_credentials
-    override-checkout: stable-2.7
-
-# packer jobs
-- job:
-    name: packer-functional-opentelekomcloud
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of v1.3.3 against opentelekomcloud.
-    run: playbooks/packer-functional-public-clouds/run.yaml
-    vars:
-      cloud_name: opentelekomcloud
-    secrets:
-      - opentelekomcloud_credentials
-    override-checkout: v1.3.3
-
-- job:
-    name: packer-functional-orange
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of v1.3.3 against orange.
-    run: playbooks/packer-functional-public-clouds/run.yaml
-    vars:
-      cloud_name: orange
-    secrets:
-      - orange_credentials
-    override-checkout: v1.3.3
-
-- job:
-    name: packer-functional-telefonica
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of v1.3.3 against telefonica.
-    run: playbooks/packer-functional-public-clouds/run.yaml
-    vars:
-      cloud_name: telefonica
-    secrets:
-      - telefonica_credentials
-    override-checkout: v1.3.3
-
-- job:
-    name: packer-functional-huaweicloud
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of v1.3.3 against huaweicloud.
-    run: playbooks/packer-functional-public-clouds/run.yaml
-    vars:
-      cloud_name: huaweicloud
-    secrets:
-      - huaweicloud_credentials
-    override-checkout: v1.3.3
-
-- job:
-    name: packer-master-functional-devstack
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of master against devstack.
-    run: playbooks/packer-functional-devstack/run.yaml
-
-- job:
-    name: packer-functional-devstack
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of v1.3.3 against master devstack.
-    run: playbooks/packer-functional-devstack/run.yaml
-    override-checkout: v1.3.3
-
-- job:
-    name: packer-functional-devstack-rocky
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of v1.3.3 against rocky devstack.
-    run: playbooks/packer-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/rocky
-    override-checkout: v1.3.3
-
-- job:
-    name: packer-functional-devstack-queens
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of v1.3.3 against queens devstack.
-    run: playbooks/packer-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/queens
-    override-checkout: v1.3.3
-
-- job:
-    name: packer-functional-devstack-pike
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of v1.3.3 against pike devstack.
-    run: playbooks/packer-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/pike
-    override-checkout: v1.3.3
-
-- job:
-    name: packer-functional-devstack-ocata
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of v1.3.3 against ocata devstack.
-    run: playbooks/packer-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/ocata
-    override-checkout: v1.3.3
-
-- job:
-    name: packer-functional-devstack-newton
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of v1.3.3  against newton devstack.
-    run: playbooks/packer-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/newton
-    override-checkout: v1.3.3
-
-- job:
-    name: packer-functional-devstack-mitaka
-    parent: init-test
-    description: |
-      Test image building functionality of Packer of v1.3.3 against mitaka devstack.
-    run: playbooks/packer-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/mitaka
-    override-checkout: v1.3.3
-    nodeset: ubuntu-trusty
-
-# docker machine jobs
-- job:
-    name: docker-machine-functional-opentelekomcloud
-    parent: init-test
-    description: |
-      Test functionalities of Docker machine of v0.16.1 version against opentelekomcloud.
-    run: playbooks/docker-machine-functional-public-clouds/run.yaml
-    vars:
-      cloud_name: opentelekomcloud
-    override-checkout: v0.16.1
-    secrets:
-      - opentelekomcloud_credentials
-
-- job:
-    name: docker-machine-functional-orange
-    parent: init-test
-    description: |
-      Test functionalities of Docker machine of v0.16.1 version against orange.
-    run: playbooks/docker-machine-functional-public-clouds/run.yaml
-    vars:
-      cloud_name: orange
-    override-checkout: v0.16.1
-    secrets:
-      - orange_credentials
-
-- job:
-    name: docker-machine-functional-telefonica
-    parent: init-test
-    description: |
-      Test functionalities of Docker machine of v0.16.1 version against telefonica.
-    run: playbooks/docker-machine-functional-public-clouds/run.yaml
-    vars:
-      cloud_name: telefonica
-      ssh_user: linux
-    override-checkout: v0.16.1
-    secrets:
-      - telefonica_credentials
-
-- job:
-    name: docker-machine-functional-huaweicloud
-    parent: init-test
-    description: |
-      Test functionalities of Docker machine of v0.16.1 version against huaweicloud.
-    run: playbooks/docker-machine-functional-public-clouds/run.yaml
-    vars:
-      cloud_name: huaweicloud
-    override-checkout: v0.16.1
-    secrets:
-      - huaweicloud_credentials
-
-- job:
-    name: docker-machine-functional-devstack-mitaka
-    parent: init-test
-    description: |
-      Test image building functionality of Docker machine of v0.16.1 version against
-      devstack of Mitaka.
-    run: playbooks/docker-machine-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/mitaka
-    override-checkout: v0.16.1
-    nodeset: ubuntu-trusty
-
-- job:
-    name: docker-machine-functional-devstack-newton
-    parent: init-test
-    description: |
-      Test image building functionality of Docker machine of v0.16.1 version against
-      devstack of Newton.
-    run: playbooks/docker-machine-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/newton
-    override-checkout: v0.16.1
-
-- job:
-    name: docker-machine-functional-devstack-ocata
-    parent: init-test
-    description: |
-      Test image building functionality of Docker machine of v0.16.1 version against
-      devstack of Ocata.
-    run: playbooks/docker-machine-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/ocata
-    override-checkout: v0.16.1
-
-- job:
-    name: docker-machine-functional-devstack-pike
-    parent: init-test
-    description: |
-      Test image building functionality of Docker machine of v0.16.1 version against
-      devstack of Pike.
-    run: playbooks/docker-machine-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/pike
-    override-checkout: v0.16.1
-
-- job:
-    name: docker-machine-functional-devstack-queens
-    parent: init-test
-    description: |
-      Test image building functionality of Docker machine of v0.16.1 version against
-      devstack of Queens.
-    run: playbooks/docker-machine-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/queens
-    override-checkout: v0.16.1
-
-- job:
-    name: docker-machine-functional-devstack-rocky
-    parent: init-test
-    description: |
-      Test image building functionality of Docker machine of v0.16.1 version against
-      devstack of Rocky.
-    run: playbooks/docker-machine-functional-devstack/run.yaml
-    vars:
-      global_env:
-        OS_BRANCH: stable/rocky
-    override-checkout: v0.16.1
-#
 #- job:
-#    name: bosh-huaweicloud-cpi-release-acceptance-test
+#    name: openstacksdk-ansible-devel-functional-devstack
 #    parent: init-test
 #    description: |
-#      This job validation tests of bosh-huaweicloud-cpi-release aganist Huaweicloud
-#    run: playbooks/bosh-huaweicloud-cpi-release-acceptance-test/run.yaml
+#      Run openstacksdk ansible functional tests against a master devstack using git devel branch version of ansible.
+#    run: playbooks/ansible-functional-devstack/run.yaml
 #    required-projects:
-#      - zhongjun2/cf-huaweicloud-validator
+#      - openstack/openstacksdk
+#      - name: liu-sheng/ansible
+#        override-checkout: devel
+#    vars:
+#      os_sdk: openstacksdk
+#
+#- job:
+#    name: openstacksdk-ansible-functional-devstack
+#    parent: init-test
+#    description: |
+#      Run openstacksdk ansible functional tests against a master devstack using git stable-2.7 branch version of ansible.
+#    run: playbooks/ansible-functional-devstack/run.yaml
+#    required-projects:
+#      - openstack/openstacksdk
+#    vars:
+#      os_sdk: openstacksdk
+#    override-checkout: stable-2.7
+#
+#- job:
+#    name: openstacksdk-ansible-functional-devstack-rocky
+#    parent: init-test
+#    description: |
+#      Run openstacksdk ansible functional tests against a rocky devstack using git stable-2.7 branch version of ansible.
+#    run: playbooks/ansible-functional-devstack/run.yaml
+#    required-projects:
+#      - openstack/openstacksdk
+#    vars:
+#      os_sdk: openstacksdk
+#      global_env:
+#        OS_BRANCH: stable/rocky
+#    override-checkout: stable-2.7
+#
+#- job:
+#    name: openstacksdk-ansible-functional-devstack-queens
+#    parent: init-test
+#    description: |
+#      Run openstacksdk ansible functional tests against a queens devstack using git stable-2.7 branch version of ansible.
+#    run: playbooks/ansible-functional-devstack/run.yaml
+#    required-projects:
+#      - openstack/openstacksdk
+#    vars:
+#      os_sdk: openstacksdk
+#      global_env:
+#        OS_BRANCH: stable/queens
+#    override-checkout: stable-2.7
+#
+#- job:
+#    name: openstacksdk-ansible-functional-devstack-pike
+#    parent: init-test
+#    description: |
+#      Run openstacksdk ansible functional tests against a pike devstack using git stable-2.7 branch version of ansible.
+#    run: playbooks/ansible-functional-devstack/run.yaml
+#    required-projects:
+#      - openstack/openstacksdk
+#      - name: liu-sheng/ansible
+#        override-checkout: stable-2.7
+#    vars:
+#      os_sdk: openstacksdk
+#      global_env:
+#        OS_BRANCH: stable/pike
+#
+#- job:
+#    name: openstacksdk-ansible-functional-devstack-ocata
+#    parent: init-test
+#    description: |
+#      Run openstacksdk ansible functional tests against a ocata devstack using git stable-2.7 branch version of ansible.
+#    run: playbooks/ansible-functional-devstack/run.yaml
+#    required-projects:
+#      - openstack/openstacksdk
+#    vars:
+#      os_sdk: openstacksdk
+#      global_env:
+#        OS_BRANCH: stable/ocata
+#    override-checkout: stable-2.7
+#
+#- job:
+#    name: openstacksdk-ansible-functional-devstack-newton
+#    parent: init-test
+#    description: |
+#      Run openstacksdk ansible functional tests against a newton devstack using git stable-2.7 branch version of ansible.
+#    run: playbooks/ansible-functional-devstack/run.yaml
+#    required-projects:
+#      - openstack/openstacksdk
+#    vars:
+#      os_sdk: openstacksdk
+#      global_env:
+#        OS_BRANCH: stable/newton
+#    override-checkout: stable-2.7
+#
+#- job:
+#    name: openstacksdk-ansible-functional-devstack-mitaka
+#    parent: init-test
+#    description: |
+#      Run openstacksdk ansible functional tests against a mitaka devstac using git stable-2.7 branch version of ansible.
+#    run: playbooks/ansible-functional-devstack/run.yaml
+#    required-projects:
+#      - openstack/openstacksdk
+#    vars:
+#      os_sdk: openstacksdk
+#      global_env:
+#        OS_BRANCH: stable/mitaka
+#    nodeset: ubuntu-trusty
+#    override-checkout: stable-2.7
+#
+#- job:
+#    name: shade-ansible-stable-2.5-functional-devstack
+#    parent: init-test
+#    description: |
+#      Run shade ansible functional tests against a master devstack
+#      using git stable-2.5 branch version of ansible.
+#    run: playbooks/ansible-functional-devstack/run.yaml
+#    required-projects:
+#      - openstack-infra/shade
+#    override-checkout: stable-2.5
+#    vars:
+#      os_sdk: shade
+#
+#- job:
+#    name: openstacksdk-ansible-functional-opentelekomcloud
+#    parent: init-test
+#    description: |
+#      Run openstacksdk ansible functional tests against a opentelekomcloud using git stable-2.7 branch version of ansible.
+#    run: playbooks/ansible-functional-public-clouds/run.yaml
+#    required-projects:
+#      - openstack/openstacksdk
+#    vars:
+#      cloud_name: opentelekomcloud
+#      os_sdk: openstacksdk
+#      # Disable public cloud policy limit roles: group keystone_domain keystone_role nova_flavor user user_group
+#      test_cases: auth image keypair network object port router security_group server subnet volume
+#    secrets:
+#      - opentelekomcloud_credentials
+#    override-checkout: stable-2.7
+#
+#- job:
+#    name: openstacksdk-ansible-functional-orange
+#    parent: init-test
+#    description: |
+#      Run openstacksdk ansible functional tests against orange cloud using git stable-2.7 branch version of ansible.
+#    run: playbooks/ansible-functional-public-clouds/run.yaml
+#    required-projects:
+#      - openstack/openstacksdk
+#    vars:
+#      cloud_name: orange
+#      os_sdk: openstacksdk
+#      # Disable public cloud policy limit roles: group keystone_domain keystone_role nova_flavor user user_group object
+#      test_cases: auth image keypair network port router security_group server subnet volume
+#    secrets:
+#      - orange_credentials
+#    override-checkout: stable-2.7
+#
+#- job:
+#    name: openstacksdk-ansible-functional-telefonica
+#    parent: init-test
+#    description: |
+#      Run openstacksdk ansible functional tests against telefonica cloud using git stable-2.7 branch version of ansible.
+#    run: playbooks/ansible-functional-public-clouds/run.yaml
+#    required-projects:
+#      - openstack/openstacksdk
+#    vars:
+#      cloud_name: telefonica
+#      os_sdk: openstacksdk
+#      # Disable public cloud policy limit roles: group keystone_domain keystone_role nova_flavor user user_group object
+#      test_cases: auth image keypair network port router security_group server subnet volume
+#    secrets:
+#      - telefonica_credentials
+#    override-checkout: stable-2.7
+#
+#- job:
+#    name: openstacksdk-ansible-functional-huaweicloud
+#    parent: init-test
+#    description: |
+#      Run openstacksdk ansible functional tests against huaweicloud using git stable-2.7 branch version of ansible.
+#    run: playbooks/ansible-functional-public-clouds/run.yaml
+#    required-projects:
+#      - openstack/openstacksdk
+#    vars:
+#      cloud_name: huaweicloud
+#      os_sdk: openstacksdk
+#      # Disable public cloud policy limit roles: group keystone_domain keystone_role nova_flavor user user_group object
+#      test_cases: auth image keypair network port router security_group server subnet volume
+#    secrets:
+#      - huaweicloud_credentials
+#    override-checkout: stable-2.7
+#
+## packer jobs
+#- job:
+#    name: packer-functional-opentelekomcloud
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of v1.3.3 against opentelekomcloud.
+#    run: playbooks/packer-functional-public-clouds/run.yaml
+#    vars:
+#      cloud_name: opentelekomcloud
+#    secrets:
+#      - opentelekomcloud_credentials
+#    override-checkout: v1.3.3
+#
+#- job:
+#    name: packer-functional-orange
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of v1.3.3 against orange.
+#    run: playbooks/packer-functional-public-clouds/run.yaml
+#    vars:
+#      cloud_name: orange
+#    secrets:
+#      - orange_credentials
+#    override-checkout: v1.3.3
+#
+#- job:
+#    name: packer-functional-telefonica
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of v1.3.3 against telefonica.
+#    run: playbooks/packer-functional-public-clouds/run.yaml
+#    vars:
+#      cloud_name: telefonica
+#    secrets:
+#      - telefonica_credentials
+#    override-checkout: v1.3.3
+#
+#- job:
+#    name: packer-functional-huaweicloud
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of v1.3.3 against huaweicloud.
+#    run: playbooks/packer-functional-public-clouds/run.yaml
+#    vars:
+#      cloud_name: huaweicloud
+#    secrets:
+#      - huaweicloud_credentials
+#    override-checkout: v1.3.3
+#
+#- job:
+#    name: packer-master-functional-devstack
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of master against devstack.
+#    run: playbooks/packer-functional-devstack/run.yaml
+#
+#- job:
+#    name: packer-functional-devstack
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of v1.3.3 against master devstack.
+#    run: playbooks/packer-functional-devstack/run.yaml
+#    override-checkout: v1.3.3
+#
+#- job:
+#    name: packer-functional-devstack-rocky
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of v1.3.3 against rocky devstack.
+#    run: playbooks/packer-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/rocky
+#    override-checkout: v1.3.3
+#
+#- job:
+#    name: packer-functional-devstack-queens
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of v1.3.3 against queens devstack.
+#    run: playbooks/packer-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/queens
+#    override-checkout: v1.3.3
+#
+#- job:
+#    name: packer-functional-devstack-pike
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of v1.3.3 against pike devstack.
+#    run: playbooks/packer-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/pike
+#    override-checkout: v1.3.3
+#
+#- job:
+#    name: packer-functional-devstack-ocata
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of v1.3.3 against ocata devstack.
+#    run: playbooks/packer-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/ocata
+#    override-checkout: v1.3.3
+#
+#- job:
+#    name: packer-functional-devstack-newton
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of v1.3.3  against newton devstack.
+#    run: playbooks/packer-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/newton
+#    override-checkout: v1.3.3
+#
+#- job:
+#    name: packer-functional-devstack-mitaka
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Packer of v1.3.3 against mitaka devstack.
+#    run: playbooks/packer-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/mitaka
+#    override-checkout: v1.3.3
+#    nodeset: ubuntu-trusty
+#
+## docker machine jobs
+#- job:
+#    name: docker-machine-functional-opentelekomcloud
+#    parent: init-test
+#    description: |
+#      Test functionalities of Docker machine of v0.16.1 version against opentelekomcloud.
+#    run: playbooks/docker-machine-functional-public-clouds/run.yaml
+#    vars:
+#      cloud_name: opentelekomcloud
+#    override-checkout: v0.16.1
+#    secrets:
+#      - opentelekomcloud_credentials
+#
+#- job:
+#    name: docker-machine-functional-orange
+#    parent: init-test
+#    description: |
+#      Test functionalities of Docker machine of v0.16.1 version against orange.
+#    run: playbooks/docker-machine-functional-public-clouds/run.yaml
+#    vars:
+#      cloud_name: orange
+#    override-checkout: v0.16.1
+#    secrets:
+#      - orange_credentials
+#
+#- job:
+#    name: docker-machine-functional-telefonica
+#    parent: init-test
+#    description: |
+#      Test functionalities of Docker machine of v0.16.1 version against telefonica.
+#    run: playbooks/docker-machine-functional-public-clouds/run.yaml
+#    vars:
+#      cloud_name: telefonica
+#      ssh_user: linux
+#    override-checkout: v0.16.1
+#    secrets:
+#      - telefonica_credentials
+#
+#- job:
+#    name: docker-machine-functional-huaweicloud
+#    parent: init-test
+#    description: |
+#      Test functionalities of Docker machine of v0.16.1 version against huaweicloud.
+#    run: playbooks/docker-machine-functional-public-clouds/run.yaml
+#    vars:
+#      cloud_name: huaweicloud
+#    override-checkout: v0.16.1
+#    secrets:
+#      - huaweicloud_credentials
+#
+#- job:
+#    name: docker-machine-functional-devstack-mitaka
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Docker machine of v0.16.1 version against
+#      devstack of Mitaka.
+#    run: playbooks/docker-machine-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/mitaka
+#    override-checkout: v0.16.1
+#    nodeset: ubuntu-trusty
+#
+#- job:
+#    name: docker-machine-functional-devstack-newton
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Docker machine of v0.16.1 version against
+#      devstack of Newton.
+#    run: playbooks/docker-machine-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/newton
+#    override-checkout: v0.16.1
+#
+#- job:
+#    name: docker-machine-functional-devstack-ocata
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Docker machine of v0.16.1 version against
+#      devstack of Ocata.
+#    run: playbooks/docker-machine-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/ocata
+#    override-checkout: v0.16.1
+#
+#- job:
+#    name: docker-machine-functional-devstack-pike
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Docker machine of v0.16.1 version against
+#      devstack of Pike.
+#    run: playbooks/docker-machine-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/pike
+#    override-checkout: v0.16.1
+#
+#- job:
+#    name: docker-machine-functional-devstack-queens
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Docker machine of v0.16.1 version against
+#      devstack of Queens.
+#    run: playbooks/docker-machine-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/queens
+#    override-checkout: v0.16.1
+#
+#- job:
+#    name: docker-machine-functional-devstack-rocky
+#    parent: init-test
+#    description: |
+#      Test image building functionality of Docker machine of v0.16.1 version against
+#      devstack of Rocky.
+#    run: playbooks/docker-machine-functional-devstack/run.yaml
+#    vars:
+#      global_env:
+#        OS_BRANCH: stable/rocky
+#    override-checkout: v0.16.1
+##
+##- job:
+##    name: bosh-huaweicloud-cpi-release-acceptance-test
+##    parent: init-test
+##    description: |
+##      This job validation tests of bosh-huaweicloud-cpi-release aganist Huaweicloud
+##    run: playbooks/bosh-huaweicloud-cpi-release-acceptance-test/run.yaml
+##    required-projects:
+##      - zhongjun2/cf-huaweicloud-validator
+##    secrets:
+##      - huaweicloud_credentials
+##    nodeset: ubuntu-xenial-huaweicloud
+#
+#- job:
+#    name: bosh-acceptance-test-huaweicloud
+#    parent: init-test
+#    description: |
+#      This job run tests of bosh-acceptance-test aganist Huaweicloud
+#    run: playbooks/bosh-acceptance-test-huaweicloud/run.yaml
+#    post-run: playbooks/bosh-acceptance-test-huaweicloud/post.yaml
+#    required-projects:
+#      - liu-sheng/bosh-acceptance-tests
 #    secrets:
 #      - huaweicloud_credentials
 #    nodeset: ubuntu-xenial-huaweicloud
-
-- job:
-    name: bosh-acceptance-test-huaweicloud
-    parent: init-test
-    description: |
-      This job run tests of bosh-acceptance-test aganist Huaweicloud
-    run: playbooks/bosh-acceptance-test-huaweicloud/run.yaml
-    post-run: playbooks/bosh-acceptance-test-huaweicloud/post.yaml
-    required-projects:
-      - liu-sheng/bosh-acceptance-tests
-    secrets:
-      - huaweicloud_credentials
-    nodeset: ubuntu-xenial-huaweicloud
-
-- job:
-    name: osb-checker-test-huaweicloud
-    parent: init-test
-    description: |
-      This job run tests of osb-checker aganist Huaweicloud
-    run: playbooks/osb-checker-test-huaweicloud/run.yaml
-    required-projects:
-      - openservicebrokerapi/osb-checker
-    secrets:
-      - huaweicloud_credentials
-
-- job:
-    name: manageiq-providers-openstack-test-devstack
-    parent: init-test
-    description: |
-      This job run tests of manageiq-providers-openstack aganist Devstack
-    run: playbooks/manageiq-providers-openstack-test-devstack/run.yaml
-
-
-# terraform-provider-huaweicloud acceptance tests against FusionCloud
-- job:
-    name: terraform-provider-huaweicloud-v1.2.0-acceptance-test-fusioncloud
-    parent: golang-test
-    description: |
-      Run acceptance tests of terraform-provider-huaweicloud repo against fusioncloud
-    run: playbooks/terraform-provider-huaweicloud-acceptance-test-fusioncloud/run.yaml
-    post-run: playbooks/terraform-provider-huaweicloud-acceptance-test-fusioncloud/post.yaml
-    timeout: 14400
-    secrets:
-      - fusioncloud_credentials
-    override-checkout: v1.2.0
-
-# terraform-provider-openstack acceptance tests against FusionCloud
-- job:
-    name: terraform-provider-openstack-acceptance-test-fusioncloud
-    parent: golang-test
-    description: |
-      Run acceptance tests of terraform-provider-openstack repo against fusioncloud
-    run: playbooks/terraform-provider-openstack-acceptance-test-fusioncloud/run.yaml
-    secrets:
-      - fusioncloud_credentials
-
-# OpenShift-Origin v3.9.0 test against Fusioncloud
-- job:
-    name: openshift-origin-v3.9.0-functional-test-fusioncloud
-    parent: init-test
-    description: |
-      Run functional tests of openshift-origin repo of v3.9.0 release against fusioncloud
-    run: playbooks/openshift-orgin-functional-test-fusioncloud/run.yaml
-    post-run: playbooks/openshift-orgin-functional-test-fusioncloud/post.yaml
-    required-projects:
-      - huaweicloud/openshift-ansible
-    vars:
-      cloud_name: fusioncloud
-      inventory_name: fusioncloud
-      openshift_external_net_name: eip_external_net2
-    secrets:
-      - fusioncloud_credentials
-
-- job:
-    name: openshift-origin-v3.9.0-functional-test-huaweicloud
-    parent: init-test
-    description: |
-      Run functional tests of openshift-origin repo of v3.9.0 release against huaweicloud
-    run: playbooks/openshift-orgin-functional-test-public-clouds/run.yaml
-    post-run: playbooks/openshift-orgin-functional-test-public-clouds/post.yaml
-    required-projects:
-      - huaweicloud/openshift-ansible
-    vars:
-      cloud_name: huaweicloud
-      inventory_name: huawei
-      openshift_image_name: "CentOS 7.5 64bit"
-    secrets:
-      - huaweicloud_credentials
-
-- job:
-    name: openshift-origin-v3.9.0-functional-test-opentelekomcloud
-    parent: init-test
-    description: |
-      Run functional tests of openshift-origin repo of v3.9.0 release against opentelekomcloud
-    run: playbooks/openshift-orgin-functional-test-public-clouds/run.yaml
-    post-run: playbooks/openshift-orgin-functional-test-public-clouds/post.yaml
-    required-projects:
-      - huaweicloud/openshift-ansible
-    vars:
-      cloud_name: opentelekomcloud
-      inventory_name: otc
-    secrets:
-      - opentelekomcloud_credentials
-
-- job:
-    name: openshift-origin-v3.9.0-functional-test-telefonica
-    parent: init-test
-    description: |
-      Run functional tests of openshift-origin repo of v3.9.0 release against telefonica cloud
-    run: playbooks/openshift-orgin-functional-test-public-clouds/run.yaml
-    post-run: playbooks/openshift-orgin-functional-test-public-clouds/post.yaml
-    required-projects:
-      - huaweicloud/openshift-ansible
-    vars:
-      cloud_name: telefonica
-      inventory_name: telefonica
-    secrets:
-      - telefonica_credentials
-
-- job:
-    name: openshift-origin-v3.9.0-functional-test-orange
-    parent: init-test
-    description: |
-      Run functional tests of openshift-origin repo of v3.9.0 release against orange cloud
-    run: playbooks/openshift-orgin-functional-test-public-clouds/run.yaml
-    post-run: playbooks/openshift-orgin-functional-test-public-clouds/post.yaml
-    required-projects:
-      - huaweicloud/openshift-ansible
-    vars:
-      cloud_name: orange
-      inventory_name: orange
-    secrets:
-      - orange_credentials
+#
+#- job:
+#    name: osb-checker-test-huaweicloud
+#    parent: init-test
+#    description: |
+#      This job run tests of osb-checker aganist Huaweicloud
+#    run: playbooks/osb-checker-test-huaweicloud/run.yaml
+#    required-projects:
+#      - openservicebrokerapi/osb-checker
+#    secrets:
+#      - huaweicloud_credentials
+#
+#- job:
+#    name: manageiq-providers-openstack-test-devstack
+#    parent: init-test
+#    description: |
+#      This job run tests of manageiq-providers-openstack aganist Devstack
+#    run: playbooks/manageiq-providers-openstack-test-devstack/run.yaml
+#
+#
+## terraform-provider-huaweicloud acceptance tests against FusionCloud
+#- job:
+#    name: terraform-provider-huaweicloud-v1.2.0-acceptance-test-fusioncloud
+#    parent: golang-test
+#    description: |
+#      Run acceptance tests of terraform-provider-huaweicloud repo against fusioncloud
+#    run: playbooks/terraform-provider-huaweicloud-acceptance-test-fusioncloud/run.yaml
+#    post-run: playbooks/terraform-provider-huaweicloud-acceptance-test-fusioncloud/post.yaml
+#    timeout: 14400
+#    secrets:
+#      - fusioncloud_credentials
+#    override-checkout: v1.2.0
+#
+## terraform-provider-openstack acceptance tests against FusionCloud
+#- job:
+#    name: terraform-provider-openstack-acceptance-test-fusioncloud
+#    parent: golang-test
+#    description: |
+#      Run acceptance tests of terraform-provider-openstack repo against fusioncloud
+#    run: playbooks/terraform-provider-openstack-acceptance-test-fusioncloud/run.yaml
+#    secrets:
+#      - fusioncloud_credentials
+#
+## OpenShift-Origin v3.9.0 test against Fusioncloud
+#- job:
+#    name: openshift-origin-v3.9.0-functional-test-fusioncloud
+#    parent: init-test
+#    description: |
+#      Run functional tests of openshift-origin repo of v3.9.0 release against fusioncloud
+#    run: playbooks/openshift-orgin-functional-test-fusioncloud/run.yaml
+#    post-run: playbooks/openshift-orgin-functional-test-fusioncloud/post.yaml
+#    required-projects:
+#      - huaweicloud/openshift-ansible
+#    vars:
+#      cloud_name: fusioncloud
+#      inventory_name: fusioncloud
+#      openshift_external_net_name: eip_external_net2
+#    secrets:
+#      - fusioncloud_credentials
+#
+#- job:
+#    name: openshift-origin-v3.9.0-functional-test-huaweicloud
+#    parent: init-test
+#    description: |
+#      Run functional tests of openshift-origin repo of v3.9.0 release against huaweicloud
+#    run: playbooks/openshift-orgin-functional-test-public-clouds/run.yaml
+#    post-run: playbooks/openshift-orgin-functional-test-public-clouds/post.yaml
+#    required-projects:
+#      - huaweicloud/openshift-ansible
+#    vars:
+#      cloud_name: huaweicloud
+#      inventory_name: huawei
+#      openshift_image_name: "CentOS 7.5 64bit"
+#    secrets:
+#      - huaweicloud_credentials
+#
+#- job:
+#    name: openshift-origin-v3.9.0-functional-test-opentelekomcloud
+#    parent: init-test
+#    description: |
+#      Run functional tests of openshift-origin repo of v3.9.0 release against opentelekomcloud
+#    run: playbooks/openshift-orgin-functional-test-public-clouds/run.yaml
+#    post-run: playbooks/openshift-orgin-functional-test-public-clouds/post.yaml
+#    required-projects:
+#      - huaweicloud/openshift-ansible
+#    vars:
+#      cloud_name: opentelekomcloud
+#      inventory_name: otc
+#    secrets:
+#      - opentelekomcloud_credentials
+#
+#- job:
+#    name: openshift-origin-v3.9.0-functional-test-telefonica
+#    parent: init-test
+#    description: |
+#      Run functional tests of openshift-origin repo of v3.9.0 release against telefonica cloud
+#    run: playbooks/openshift-orgin-functional-test-public-clouds/run.yaml
+#    post-run: playbooks/openshift-orgin-functional-test-public-clouds/post.yaml
+#    required-projects:
+#      - huaweicloud/openshift-ansible
+#    vars:
+#      cloud_name: telefonica
+#      inventory_name: telefonica
+#    secrets:
+#      - telefonica_credentials
+#
+#- job:
+#    name: openshift-origin-v3.9.0-functional-test-orange
+#    parent: init-test
+#    description: |
+#      Run functional tests of openshift-origin repo of v3.9.0 release against orange cloud
+#    run: playbooks/openshift-orgin-functional-test-public-clouds/run.yaml
+#    post-run: playbooks/openshift-orgin-functional-test-public-clouds/post.yaml
+#    required-projects:
+#      - huaweicloud/openshift-ansible
+#    vars:
+#      cloud_name: orange
+#      inventory_name: orange
+#    secrets:
+#      - orange_credentials
 
 - job:
     name: ai-on-openlab-test-tensorflow-k8s
@@ -1218,14 +1218,14 @@
     vars:
       is_gpu_enabled: true
       env_keeping: true
-
-- job:
-    name: arm-on-openlab-test
-    parent: init-test
-    description: |
-      Test arm in openlab cluster.
-    run: playbooks/arm-on-openlab/run.yaml
-    nodeset: ubuntu-xenial-arm64
+#
+#- job:
+#    name: arm-on-openlab-test
+#    parent: init-test
+#    description: |
+#      Test arm in openlab cluster.
+#    run: playbooks/arm-on-openlab/run.yaml
+#    nodeset: ubuntu-xenial-arm64
 
 - job:
     name: check-test-ha
@@ -1242,50 +1242,50 @@
 
 
 
-- job:
-    name: spark-integration-test-kubeadm-k8s
-    parent: init-test
-    description: |
-      Run integration tests of spark of master with k8s cluster deployed by kubeadm
-    run: playbooks/spark-integration-test-kubeadm-k8s/run.yaml
-    post-run: playbooks/spark-integration-test-kubeadm-k8s/post.yaml
-    vars:
-      k8s_log_dir: '{{ ansible_user_dir }}/workspace/logs/kubernetes'
-
-- job:
-    name: spark-integration-test-minikube-k8s
-    parent: init-test
-    description: |
-      Run integration tests of spark of v2.4.0 with k8s cluster deployed by minikube
-    run: playbooks/spark-integration-test-minikube-k8s/run.yaml
-    post-run: playbooks/spark-integration-test-minikube-k8s/post.yaml
-    override-checkout: branch-2.4
-    vars:
-      k8s_log_dir: '{{ ansible_user_dir }}/workspace/logs/kubernetes'
-
-- job:
-    name: helm-integration-test-kubeadm-k8s
-    parent: init-test
-    description: |
-      Run integration tests of helm charts with k8s cluster deployed by kubeadm
-    run: playbooks/helm-integration-test-kubeadm-k8s/run.yaml
-    vars:
-      chart_testing_version: v2.2.0
-    
-- job:
-    name: helm-integration-test-kubeadm-k8s-v1.12.6
-    parent: init-test
-    description: |
-      Run integration tests of helm charts with v1.12.6 k8s cluster deployed by kubeadm
-    run: playbooks/helm-integration-test-kubeadm-k8s/run.yaml
-    vars:
-      chart_testing_version: v2.2.0
-      kubernetes_version: 1.12.6
-      docker_ce_version: 18.06
-
-- job:
-    name: labkeeper-functional-test
-    parent: init-test
-    description: |
-      Tru to deploy openlab CI environment with labkeeper
-    run: playbooks/labkeeper-functional-test/run.yaml
+#- job:
+#    name: spark-integration-test-kubeadm-k8s
+#    parent: init-test
+#    description: |
+#      Run integration tests of spark of master with k8s cluster deployed by kubeadm
+#    run: playbooks/spark-integration-test-kubeadm-k8s/run.yaml
+#    post-run: playbooks/spark-integration-test-kubeadm-k8s/post.yaml
+#    vars:
+#      k8s_log_dir: '{{ ansible_user_dir }}/workspace/logs/kubernetes'
+#
+#- job:
+#    name: spark-integration-test-minikube-k8s
+#    parent: init-test
+#    description: |
+#      Run integration tests of spark of v2.4.0 with k8s cluster deployed by minikube
+#    run: playbooks/spark-integration-test-minikube-k8s/run.yaml
+#    post-run: playbooks/spark-integration-test-minikube-k8s/post.yaml
+#    override-checkout: branch-2.4
+#    vars:
+#      k8s_log_dir: '{{ ansible_user_dir }}/workspace/logs/kubernetes'
+#
+#- job:
+#    name: helm-integration-test-kubeadm-k8s
+#    parent: init-test
+#    description: |
+#      Run integration tests of helm charts with k8s cluster deployed by kubeadm
+#    run: playbooks/helm-integration-test-kubeadm-k8s/run.yaml
+#    vars:
+#      chart_testing_version: v2.2.0
+#
+#- job:
+#    name: helm-integration-test-kubeadm-k8s-v1.12.6
+#    parent: init-test
+#    description: |
+#      Run integration tests of helm charts with v1.12.6 k8s cluster deployed by kubeadm
+#    run: playbooks/helm-integration-test-kubeadm-k8s/run.yaml
+#    vars:
+#      chart_testing_version: v2.2.0
+#      kubernetes_version: 1.12.6
+#      docker_ce_version: 18.06
+#
+#- job:
+#    name: labkeeper-functional-test
+#    parent: init-test
+#    description: |
+#      Tru to deploy openlab CI environment with labkeeper
+#    run: playbooks/labkeeper-functional-test/run.yaml
