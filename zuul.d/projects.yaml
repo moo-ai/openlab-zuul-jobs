@@ -3,11 +3,11 @@
       jobs:
         - openlab-zuul-jobs-check
 
-- project:
-    name: liu-sheng/labkeeper
-    check:
-      jobs:
-        - labkeeper-functional-test
+#- project:
+#    name: liu-sheng/labkeeper
+#    check:
+#      jobs:
+#        - labkeeper-functional-test
 
 # Shared zuul config specific to the OpenStack Project
 # Contains project pipeline definitions
@@ -145,48 +145,48 @@
 #        - packer-functional-devstack-rocky
 #        - packer-functional-devstack-queens
 
-- project:
-    name: liu-sheng/machine
-    check:
-      jobs:
-        - docker-machine-functional-devstack-mitaka
-        #- docker-machine-functional-devstack-newton
-        #- docker-machine-functional-devstack-pike
-        #- docker-machine-functional-devstack-ocata
-        #- docker-machine-functional-devstack-queens
-        #- docker-machine-functional-devstack-rocky
-        #- docker-machine-functional-huaweicloud
-        #- docker-machine-functional-opentelekomcloud
-        #- docker-machine-functional-orange
-        #- docker-machine-functional-telefonica
+#- project:
+#    name: liu-sheng/machine
+#    check:
+#      jobs:
+#        - docker-machine-functional-devstack-mitaka
+#        #- docker-machine-functional-devstack-newton
+#        #- docker-machine-functional-devstack-pike
+#        #- docker-machine-functional-devstack-ocata
+#        #- docker-machine-functional-devstack-queens
+#        #- docker-machine-functional-devstack-rocky
+#        #- docker-machine-functional-huaweicloud
+#        #- docker-machine-functional-opentelekomcloud
+#        #- docker-machine-functional-orange
+#        #- docker-machine-functional-telefonica
 
-- project:
-    name: liu-sheng/huaweicloud-service-broker
-    check:
-      jobs:
-        - osb-checker-test-huaweicloud
-
-- project:
-    name: liu-sheng/manageiq-providers-openstack
-    check:
-      jobs:
-        - manageiq-providers-openstack-test-devstack
-
-- project:
-    name: liu-sheng/terraform-provider-huaweicloud
-    check:
-      jobs:
-        - terraform-provider-huaweicloud-v1.2.0-acceptance-test-fusioncloud
-
-- project:
-    name: liu-sheng/origin
-    check:
-      jobs:
-        - openshift-origin-v3.9.0-functional-test-fusioncloud
-#        - openshift-origin-v3.9.0-functional-test-huaweicloud
-        - openshift-origin-v3.9.0-functional-test-opentelekomcloud
-#        - openshift-origin-v3.9.0-functional-test-telefonica
-#        - openshift-origin-v3.9.0-functional-test-orange
+#- project:
+#    name: liu-sheng/huaweicloud-service-broker
+#    check:
+#      jobs:
+#        - osb-checker-test-huaweicloud
+#
+#- project:
+#    name: liu-sheng/manageiq-providers-openstack
+#    check:
+#      jobs:
+#        - manageiq-providers-openstack-test-devstack
+#
+#- project:
+#    name: liu-sheng/terraform-provider-huaweicloud
+#    check:
+#      jobs:
+#        - terraform-provider-huaweicloud-v1.2.0-acceptance-test-fusioncloud
+#
+#- project:
+#    name: liu-sheng/origin
+#    check:
+#      jobs:
+#        - openshift-origin-v3.9.0-functional-test-fusioncloud
+##        - openshift-origin-v3.9.0-functional-test-huaweicloud
+#        - openshift-origin-v3.9.0-functional-test-opentelekomcloud
+##        - openshift-origin-v3.9.0-functional-test-telefonica
+##        - openshift-origin-v3.9.0-functional-test-orange
 
 - project:
     name: moo-ai/moo-ai.github.io
@@ -213,22 +213,22 @@
         - check-test-ha
 
 
-- project:
-    name: Yikun/arm-openlab-test
-    check:
-      jobs:
-        - arm-on-openlab-test
-
-- project:
-    name: liu-sheng/spark
-    check:
-      jobs:
-        - spark-integration-test-kubeadm-k8s
-        - spark-integration-test-minikube-k8s
-
-- project:
-    name: h00130372/charts
-    check:
-      jobs:
-        - helm-integration-test-kubeadm-k8s
-        - helm-integration-test-kubeadm-k8s-v1.12.6
+#- project:
+#    name: Yikun/arm-openlab-test
+#    check:
+#      jobs:
+#        - arm-on-openlab-test
+#
+#- project:
+#    name: liu-sheng/spark
+#    check:
+#      jobs:
+#        - spark-integration-test-kubeadm-k8s
+#        - spark-integration-test-minikube-k8s
+#
+#- project:
+#    name: h00130372/charts
+#    check:
+#      jobs:
+#        - helm-integration-test-kubeadm-k8s
+#        - helm-integration-test-kubeadm-k8s-v1.12.6
