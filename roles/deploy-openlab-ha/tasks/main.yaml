@@ -1,5 +1,5 @@
-- name: sleep 30 seconds
+- name: sleep 3 seconds
   shell:
     cmd: |
-      sleep 30
+      sleep 3
     executable: /bin/bash
